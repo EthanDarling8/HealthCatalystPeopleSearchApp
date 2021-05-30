@@ -15,21 +15,6 @@ namespace PeopleSearchApp.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.6");
 
-            modelBuilder.Entity("InterestPerson", b =>
-                {
-                    b.Property<int>("InterestsId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("PersonsId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("InterestsId", "PersonsId");
-
-                    b.HasIndex("PersonsId");
-
-                    b.ToTable("InterestPerson");
-                });
-
             modelBuilder.Entity("PeopleSearchApp.Models.Interest", b =>
                 {
                     b.Property<int>("Id")
@@ -82,19 +67,44 @@ namespace PeopleSearchApp.Migrations
                     b.ToTable("Person");
                 });
 
-            modelBuilder.Entity("InterestPerson", b =>
+            modelBuilder.Entity("PeopleSearchApp.Models.PersonInterest", b =>
                 {
-                    b.HasOne("PeopleSearchApp.Models.Interest", null)
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("InterestId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InterestId");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("PersonInterest");
+                });
+
+            modelBuilder.Entity("PeopleSearchApp.Models.PersonInterest", b =>
+                {
+                    b.HasOne("PeopleSearchApp.Models.Interest", "Interest")
                         .WithMany()
-                        .HasForeignKey("InterestsId")
+                        .HasForeignKey("InterestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PeopleSearchApp.Models.Person", null)
+                    b.HasOne("PeopleSearchApp.Models.Person", "Person")
                         .WithMany()
-                        .HasForeignKey("PersonsId")
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Interest");
+
+                    b.Navigation("Person");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,59 +6,47 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>People</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-
-<form>
-    <p>
-        Title: <input type="text" asp-for="SearchString"/>
-        <input type="submit" value="Search"/>
-    </p>
-</form>
-
 <table class="table">
     <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Person[0].FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person[0].LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person[0].Age)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person[0].Picture)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person[0].Address1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person[0].Address2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person[0].City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person[0].State)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person[0].Zip)
-        </th>
-        <th></th>
-    </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].Address1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].Address2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person[0].Zip)
+            </th>
+            <th></th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model.PersonInterest.Persons) {
-        string selectedRow = "";
-        if (item.Id == Model.PersonId) {
-            selectedRow = "table-success";
-        }
-        <tr class="@selectedRow">
+@foreach (var item in Model.Person) {
+        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -87,28 +75,11 @@
                 @Html.DisplayFor(modelItem => item.Zip)
             </td>
             <td>
-                <a asp-page="./Index" asp-route-id="@item.Id">Select</a> |
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-    }
+}
     </tbody>
 </table>
-
-@if (Model.PersonInterest.Interests != null) {
-    <h3>Person's Interests</h3>
-    <table class="table">
-        <tr>
-            <th>Interest</th>
-        </tr>
-        @foreach (var item in Model.PersonInterest.Interests) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-            </tr>
-        }
-    </table>
-}

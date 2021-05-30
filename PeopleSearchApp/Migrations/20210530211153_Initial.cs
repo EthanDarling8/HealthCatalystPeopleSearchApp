@@ -41,39 +41,46 @@ namespace PeopleSearchApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "InterestPerson",
+                name: "PersonInterest",
                 columns: table => new
                 {
-                    InterestsId = table.Column<int>(type: "INTEGER", nullable: false),
-                    PersonsId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    PersonId = table.Column<int>(type: "INTEGER", nullable: false),
+                    InterestId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InterestPerson", x => new { x.InterestsId, x.PersonsId });
+                    table.PrimaryKey("PK_PersonInterest", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_InterestPerson_Interest_InterestsId",
-                        column: x => x.InterestsId,
+                        name: "FK_PersonInterest_Interest_InterestId",
+                        column: x => x.InterestId,
                         principalTable: "Interest",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_InterestPerson_Person_PersonsId",
-                        column: x => x.PersonsId,
+                        name: "FK_PersonInterest_Person_PersonId",
+                        column: x => x.PersonId,
                         principalTable: "Person",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_InterestPerson_PersonsId",
-                table: "InterestPerson",
-                column: "PersonsId");
+                name: "IX_PersonInterest_InterestId",
+                table: "PersonInterest",
+                column: "InterestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PersonInterest_PersonId",
+                table: "PersonInterest",
+                column: "PersonId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "InterestPerson");
+                name: "PersonInterest");
 
             migrationBuilder.DropTable(
                 name: "Interest");

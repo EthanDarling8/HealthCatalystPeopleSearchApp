@@ -22,8 +22,5 @@ namespace PeopleSearchApp.Models {
         
         [NotMapped]
         public string FullName { get { return FirstName + " " + LastName; } }
-        
-        // Interest Many-To-Many
-        public virtual ICollection<Interest> Interests { get; set; }
     }
 }
