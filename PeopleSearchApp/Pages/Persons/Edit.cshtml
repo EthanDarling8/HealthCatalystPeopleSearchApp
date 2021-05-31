@@ -1,4 +1,5 @@
 @page
+@using PeopleSearchApp.Models
 @model PeopleSearchApp.Pages.Persons.EditModel
 
 @{
@@ -8,60 +9,65 @@
 
 <h1>Edit</h1>
 
-<h4>Person</h4>
-<hr />
+<h4>@Model.Person.FullName</h4>
+<hr/>
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Person.Id" />
+            <input type="hidden" asp-for="Person.Id"/>
             <div class="form-group">
                 <label asp-for="Person.FirstName" class="control-label"></label>
-                <input asp-for="Person.FirstName" class="form-control" />
+                <input asp-for="Person.FirstName" class="form-control"/>
                 <span asp-validation-for="Person.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Person.LastName" class="control-label"></label>
-                <input asp-for="Person.LastName" class="form-control" />
+                <input asp-for="Person.LastName" class="form-control"/>
                 <span asp-validation-for="Person.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Person.Age" class="control-label"></label>
-                <input asp-for="Person.Age" class="form-control" />
+                <input asp-for="Person.Age" class="form-control"/>
                 <span asp-validation-for="Person.Age" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Person.Picture" class="control-label"></label>
-                <input asp-for="Person.Picture" class="form-control" />
+                <input type="file" id="uploadBox" name="files" asp-for="Person.Picture" class="form-control"/>
                 <span asp-validation-for="Person.Picture" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Person.Interests" class="control-label"></label>
+                <textarea asp-for="Person.Interests" class="form-control"></textarea>
+                <span asp-validation-for="Person.Interests" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Person.Address1" class="control-label"></label>
-                <input asp-for="Person.Address1" class="form-control" />
+                <input asp-for="Person.Address1" class="form-control"/>
                 <span asp-validation-for="Person.Address1" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Person.Address2" class="control-label"></label>
-                <input asp-for="Person.Address2" class="form-control" />
+                <input asp-for="Person.Address2" class="form-control"/>
                 <span asp-validation-for="Person.Address2" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Person.City" class="control-label"></label>
-                <input asp-for="Person.City" class="form-control" />
+                <input asp-for="Person.City" class="form-control"/>
                 <span asp-validation-for="Person.City" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Person.State" class="control-label"></label>
-                <input asp-for="Person.State" class="form-control" />
+                <input asp-for="Person.State" class="form-control"/>
                 <span asp-validation-for="Person.State" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Person.Zip" class="control-label"></label>
-                <input asp-for="Person.Zip" class="form-control" />
+                <input asp-for="Person.Zip" class="form-control"/>
                 <span asp-validation-for="Person.Zip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary"/>
             </div>
         </form>
     </div>
@@ -72,5 +78,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

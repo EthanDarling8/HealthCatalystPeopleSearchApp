@@ -9,9 +9,15 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Person</h4>
-    <hr />
+    <h4>@Model.Person.FullName</h4>
+    <hr/>
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Person.Picture)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Model.Person.Picture" height="100px" alt="@Model.Person.FirstName">
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Person.FirstName)
         </dt>
@@ -31,10 +37,10 @@
             @Html.DisplayFor(model => model.Person.Age)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Person.Picture)
+            @Html.DisplayNameFor(model => model.Person.Interests)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Person.Picture)
+            @Html.DisplayFor(model => model.Person.Interests)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Person.Address1)

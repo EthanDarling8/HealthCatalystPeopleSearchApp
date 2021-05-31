@@ -2,51 +2,67 @@
 @model PeopleSearchApp.Pages.Persons.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "People";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>People</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form>
+    <p>
+        <input type="text" asp-for="SearchString"/>
+        <input type="submit" value="Search">
+        <input type="checkbox" asp-for="DelayedSearch"/> Delay Search
+        <a asp-page="./Index">Reset</a>
+    </p>
+</form>
+
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Person[0].FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Person[0].LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Person[0].Age)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Person[0].Picture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Person[0].Address1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Person[0].Address2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Person[0].City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Person[0].State)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Person[0].Zip)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Persons[0].Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persons[0].FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persons[0].LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persons[0].Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persons[0].Interests)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persons[0].Address1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persons[0].Address2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persons[0].City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persons[0].State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persons[0].Zip)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Person) {
+    @foreach (var item in Model.Persons) {
         <tr>
+            <td>
+                <img src="@item.Picture" height="50px" alt="@item.FirstName">
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -57,7 +73,7 @@
                 @Html.DisplayFor(modelItem => item.Age)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Picture)
+                <a asp-page="./InterestDetails" asp-route-id="@item.Id">View</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Address1)
@@ -80,6 +96,14 @@
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+    $(document).on('submit', 'form', function () {
+        busyIndicator();
+    });
+    </script>
+}

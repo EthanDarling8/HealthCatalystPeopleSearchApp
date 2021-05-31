@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="PeopleSearchAppContext-5309a4ec-fdf3-4eb8-b04c-2261f6371860" uuid="cfb6d640-cc3e-4c9c-9b4e-b89ed8d5b929">
+    <data-source source="LOCAL" name="PeopleSearchAppContext-5309a4ec-fdf3-4eb8-b04c-2261f6371860" uuid="c7aa37a7-528a-4d4c-a6a0-bb15c62a4e7b">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>

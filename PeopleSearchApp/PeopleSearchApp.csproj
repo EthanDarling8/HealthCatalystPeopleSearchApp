@@ -15,8 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Pages\Interests" />
-      <Folder Include="Pages\Persons" />
+      <Folder Include="Migrations" />
     </ItemGroup>
 
 </Project>

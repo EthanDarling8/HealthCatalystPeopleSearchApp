@@ -6,10 +6,10 @@ using PeopleSearchApp.Data;
 using PeopleSearchApp.Models;
 
 namespace PeopleSearchApp.Pages.Persons {
-    public class DetailsModel : PageModel {
+    public class InterestDetails : PageModel {
         private readonly PeopleSearchAppContext _context;
 
-        public DetailsModel(PeopleSearchAppContext context) {
+        public InterestDetails(PeopleSearchAppContext context) {
             _context = context;
         }
 
