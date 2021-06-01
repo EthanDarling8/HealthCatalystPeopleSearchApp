@@ -12,7 +12,6 @@ namespace PeopleSearchApp.Data {
         private readonly IWebHostEnvironment _environment;
 
         public FileUploadBase() {
-            // Empty constructor
         }
 
         public FileUploadBase(IWebHostEnvironment hostEnvironment, PeopleSearchAppContext context) {

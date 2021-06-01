@@ -20,7 +20,6 @@ namespace PeopleSearchApp.Pages.Persons {
         public int PersonId { get; set; }
 
         [BindProperty(SupportsGet = true)] public string SearchString { get; set; }
-
         [BindProperty(SupportsGet = true)] public bool DelayedSearch { get; set; }
 
         public async Task OnGetAsync(int? id) {

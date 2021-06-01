@@ -5,14 +5,14 @@ namespace PeopleSearchApp.Models {
     public class Person {
         [Key] public int Id { get; set; }
 
-        [Display(Name = "First Name")] public string FirstName { get; set; }
-
-        [Display(Name = "Last Name")] public string LastName { get; set; }
-
+        [Display(Name = "First Name")] 
+        public string FirstName { get; set; }
+        [Display(Name = "Last Name")] 
+        public string LastName { get; set; }
         public int Age { get; set; }
         public string Picture { get; set; }
-
-        [DataType(DataType.MultilineText)] public string Interests { get; set; }
+        [DataType(DataType.MultilineText)] 
+        public string Interests { get; set; }
 
         public string Address1 { get; set; }
         public string Address2 { get; set; }

@@ -25,6 +25,7 @@ namespace PeopleSearchApp.Pages.Persons {
         public async Task<IActionResult> OnPostAsync() {
             if (!ModelState.IsValid) return Page();
 
+            // Upload Image using custom FileUploadBase
             var files = HttpContext.Request.Form.Files;
 
             var fileUploadBase = new FileUploadBase(_environment, _context);

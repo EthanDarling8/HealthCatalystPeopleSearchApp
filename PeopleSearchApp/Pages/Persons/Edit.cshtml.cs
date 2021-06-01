@@ -39,7 +39,6 @@ namespace PeopleSearchApp.Pages.Persons {
             _context.Attach(Person).State = EntityState.Modified;
 
             var files = HttpContext.Request.Form.Files;
-
             var fileUploadBase = new FileUploadBase(_environment, _context);
             await fileUploadBase.Upload(@"images/persons", Person, files);
 
